@@ -490,13 +490,13 @@ function ExperienceTabs({ activeKey, setActiveKey, activeExperience }: { activeK
 
 function ExperienceLogo({ experience, isActive }: { experience: Experience; isActive: boolean }) {
   const [logoFailed, setLogoFailed] = useState(false);
-  const showImage = experience.logoImage && !logoFailed;
+  const logoSrc = logoFailed ? undefined : experience.logoImage;
 
   return (
     <span className={`flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border text-xs font-bold ${isActive ? "border-black/10 bg-white text-black" : "border-white/10 bg-white/[0.08] text-white/75"}`}>
-      {showImage ? (
+      {logoSrc ? (
         <Image
-          src={experience.logoImage}
+          src={logoSrc}
           alt={experience.logoAlt ?? `${experience.name} logo`}
           width={28}
           height={28}
