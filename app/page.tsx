@@ -85,7 +85,7 @@ const experiences: Experience[] = [
   {
     key: "checkinwin",
     name: "CheckInWin",
-    role: "Co-Founder & Product Lead",
+    role: "Founder - Product Lead and Implementation",
     logo: "CW",
     logoImage: "/logos/checkinwin.png",
     logoAlt: "CheckInWin logo",
@@ -175,7 +175,7 @@ const experiences: Experience[] = [
       {
         title: "EmpireHacks & NYC Ecosystem",
         description:
-          "A section for sponsorships, partner schools, and AI programming.",
+          "Built sponsorship and partner-school momentum for EmpireHacks, including support from Anthropic, McKinsey, and AWS around AI-focused programming.",
       },
       {
         title: "Community Building",
