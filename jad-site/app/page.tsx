@@ -85,7 +85,7 @@ const experiences: Experience[] = [
   {
     key: "checkinwin",
     name: "CheckInWin",
-    role: "Founder - Product Lead and Implementation",
+    role: "Product Lead",
     logo: "CW",
     logoImage: "/logos/checkinwin.png",
     logoAlt: "CheckInWin logo",
@@ -453,7 +453,7 @@ function Hero() {
           <div className="absolute inset-x-0 bottom-0 p-6">
             <p className="text-sm uppercase tracking-[0.28em] text-white/55">About Jad</p>
             <h2 className="mt-3 text-2xl font-semibold leading-tight text-white md:text-3xl">
-              Software engineer, entrepreneur, triathlete. And oh, a 730-day streak holder on Duolingo.
+              MBA, software engineer, triathlete, and a 730-day streak holder on Duolingo.
             </h2>
           </div>
         </div>
