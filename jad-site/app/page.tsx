@@ -83,36 +83,36 @@ const experiences: Experience[] = [
     ],
   },
   {
-    key: "checkinwin",
-    name: "CheckInWin",
-    role: "Product Lead",
-    logo: "CW",
-    logoImage: "/logos/checkinwin.png",
-    logoAlt: "CheckInWin logo",
-    category: "Startup / Product / B2B2C SaaS",
+    key: "studentgov",
+    name: "Cornell",
+    role: "President / Co-President",
+    logo: "CU",
+    logoImage: "/logos/cornell.png",
+    logoAlt: "Cornell University logo",
+    category: "Leadership / Community / Campus Strategy",
     shortDescription:
-      "Built a digital loyalty platform helping local businesses replace punch cards with rewards, analytics, and engagement tools.",
+      "Led campus-wide initiatives across clubs, events, student representation, institutional memory, and external partnerships.",
     metrics: [
-      { value: "1,200+", label: "Users" },
-      { value: "20", label: "Merchants onboarded" },
-      { value: "3rd", label: "BETA showcase placement" },
+      { value: "$20K", label: "Hackathon sponsorships" },
+      { value: "35", label: "Clubs supported" },
+      { value: "700+", label: "Student community" },
     ],
-    skills: ["Product", "SaaS", "CRM", "Go-to-Market", "Analytics", "UX"],
+    skills: ["Leadership", "Partnerships", "Governance", "Events", "Comms", "Strategy"],
     stories: [
       {
-        title: "From Pain Point to Product",
+        title: "Rebuilding Student Government Systems",
         description:
-          "A compact story about turning physical loyalty card friction into a startup.",
+          "A concise section about committees, documentation, and operating structure.",
       },
       {
-        title: "Merchant Onboarding",
+        title: "EmpireHacks & NYC Ecosystem",
         description:
-          "A section for sales, demos, feedback, and business customer discovery.",
+          "Built sponsorship and partner-school momentum for EmpireHacks, including support from Anthropic, McKinsey, and AWS around AI-focused programming.",
       },
       {
-        title: "AI Personalization Vision",
+        title: "Community Building",
         description:
-          "A future-looking product story around smarter rewards and retention.",
+          "A section for club fair, gala, mixers, graduation support, and student voice.",
       },
     ],
   },
@@ -151,40 +151,6 @@ const experiences: Experience[] = [
     ],
   },
   {
-    key: "studentgov",
-    name: "Student Government",
-    role: "President / Co-President",
-    logo: "SG",
-    logoImage: "/logos/cornell.png",
-    logoAlt: "Cornell University logo",
-    category: "Leadership / Community / Campus Strategy",
-    shortDescription:
-      "Led campus-wide initiatives across clubs, events, student representation, institutional memory, and external partnerships.",
-    metrics: [
-      { value: "$20K", label: "Hackathon sponsorships" },
-      { value: "35", label: "Clubs supported" },
-      { value: "700+", label: "Student community" },
-    ],
-    skills: ["Leadership", "Partnerships", "Governance", "Events", "Comms", "Strategy"],
-    stories: [
-      {
-        title: "Rebuilding Student Government Systems",
-        description:
-          "A concise section about committees, documentation, and operating structure.",
-      },
-      {
-        title: "EmpireHacks & NYC Ecosystem",
-        description:
-          "Built sponsorship and partner-school momentum for EmpireHacks, including support from Anthropic, McKinsey, and AWS around AI-focused programming.",
-      },
-      {
-        title: "Community Building",
-        description:
-          "A section for club fair, gala, mixers, graduation support, and student voice.",
-      },
-    ],
-  },
-  {
     key: "projects",
     name: "Projects & Internships",
     role: "Technical Projects / Internships",
@@ -217,6 +183,40 @@ const experiences: Experience[] = [
       "ADA Testing",
     ],
     stories: [],
+  },
+  {
+    key: "checkinwin",
+    name: "CheckInWin",
+    role: "Product Lead",
+    logo: "CW",
+    logoImage: "/logos/checkinwin.png",
+    logoAlt: "CheckInWin logo",
+    category: "Startup / Product / B2B2C SaaS",
+    shortDescription:
+      "Built a digital loyalty platform helping local businesses replace punch cards with rewards, analytics, and engagement tools.",
+    metrics: [
+      { value: "1,200+", label: "Users" },
+      { value: "20", label: "Merchants onboarded" },
+      { value: "3rd", label: "BETA showcase placement" },
+    ],
+    skills: ["Product", "SaaS", "CRM", "Go-to-Market", "Analytics", "UX"],
+    stories: [
+      {
+        title: "From Pain Point to Product",
+        description:
+          "A compact story about turning physical loyalty card friction into a startup.",
+      },
+      {
+        title: "Merchant Onboarding",
+        description:
+          "A section for sales, demos, feedback, and business customer discovery.",
+      },
+      {
+        title: "AI Personalization Vision",
+        description:
+          "A future-looking product story around smarter rewards and retention.",
+      },
+    ],
   },
 ];
 
