@@ -438,7 +438,7 @@ const personalItems: PersonalItem[] = [
 ];
 
 const custosBullets = [
-  "Won the Cornell Tech Startup Award.",
+  "Won the Cornell Tech Startup Award!",
   "Co-founded with a 5-person team. I lead business and strategy.",
   "Built for the agentic commerce bottleneck: agents can act, but companies can't govern what they do. Custos is the control plane.",
 ];
