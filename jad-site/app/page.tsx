@@ -438,47 +438,62 @@ const personalItems: PersonalItem[] = [
 ];
 
 const custosBullets = [
-  "Won the Cornell Tech Startup Award!",
+  "Won the Cornell Tech Startup Award: $100K prize, beating 50 competing teams.",
   "Co-founded with a 5-person team. I lead business and strategy.",
   "Built for the agentic commerce bottleneck: agents can act, but companies can't govern what they do. Custos is the control plane.",
+  "Human-in-the-loop control layer for agentic payments: the agent proposes, but never executes. All authority lives server-side in the policy engine.",
 ];
+
+const custosTags = ["Claude API", "Python", "Next.js"];
 
 const aiProjectsThesis =
   "Don't trust retries. Don't trust the client. Don't trust the model to stop.";
 
 const aiProjects: AIProject[] = [
   {
-    name: "Jadbot",
-    subtitle: "Automated Job Application Pipeline",
-    result: "Applies to jobs end to end with zero manual steps.",
-    bullets: [
-      "Claude-powered resume tailoring per role. python-docx for surgical bullet replacement in the resume file.",
-      "Playwright auto-submits applications on Ashby boards. Google Sheets tracks every application.",
-    ],
-    tags: ["Python", "Claude API", "Playwright", "python-docx", "Google Sheets API"],
-  },
-  {
-    name: "Reunion Brain",
-    subtitle: "Company Data Intelligence",
-    result: "AI system built on 12 months of real company data from REUNION.",
-    bullets: [
-      "Analyzed a 3,175-thread Instagram DM archive into categorized, actionable data: photographers, table inquiries, promoters, DJs.",
-    ],
-    tags: ["Python", "Claude API", "data pipeline"],
-  },
-  {
     name: "Photo Finder",
-    subtitle: "Semantic Photo Search",
-    result: "Natural language search over personal photo libraries.",
-    bullets: [],
-    tags: ["Python", "Claude API", "embeddings"],
+    subtitle: "Face-Matching Photo Retrieval",
+    result:
+      "Face-matching photo retrieval in production, serving real users with ~1,000 monthly visits.",
+    bullets: [
+      "Built for REUNION event photos: attendees upload a selfie and instantly get every photo they appear in.",
+      "Face recognition pipeline using ArcFace embeddings: 512-dimension L2-normalized vectors matched with cosine similarity against pgvector on Supabase Postgres.",
+      "Tuned the similarity threshold against real event data to balance false matches against missed photos.",
+      "Rate limited at the edge with Upstash (10 req/min per IP) to protect the pipeline from abuse.",
+      "Owned it end to end: concept, architecture, build, deploy, and iteration in production.",
+    ],
+    tags: [
+      "Next.js",
+      "Node.js",
+      "Supabase",
+      "Postgres",
+      "pgvector",
+      "ArcFace embeddings",
+      "Upstash",
+    ],
   },
   {
     name: "Calendar Assistant",
-    subtitle: "Scheduling Agent",
-    result: "AI scheduling agent that manages calendar workflows.",
-    bullets: [],
-    tags: ["Python", "Claude API"],
+    subtitle: "AI Scheduling Agent",
+    result:
+      "Claude-powered scheduling agent that reads, analyzes, and manages Google Calendar through natural conversation.",
+    bullets: [
+      "Multi-step agentic loop built on the Anthropic Messages API with tool use: the agent decides when to fetch events, run meeting analysis, or answer directly.",
+      "Full Google OAuth flow with session-based auth guarding every calendar and chat route.",
+      "Real-time responses streamed to the UI over SSE, with the tool-use branch handled mid-stream.",
+      "Deliberate guardrails: 14-day event window, 100-event cap, and 20 req/min rate limiting so the agent operates inside hard boundaries.",
+      "React frontend on Vercel, Express backend on Railway.",
+    ],
+    tags: [
+      "Claude API",
+      "React",
+      "Express",
+      "Google Calendar API",
+      "OAuth",
+      "SSE",
+      "Vercel",
+      "Railway",
+    ],
   },
 ];
 
@@ -904,7 +919,7 @@ function CustosSection() {
           enforces budgets, approvals, and audit trails so autonomous AI can actually be trusted
           with money.
         </p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           {custosBullets.map((bullet, index) => (
             <div
               key={bullet}
@@ -915,6 +930,13 @@ function CustosSection() {
               </div>
               <p className="leading-7 text-white/65">{bullet}</p>
             </div>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2">
+          {custosTags.map((tag) => (
+            <span key={tag} className="rounded-full bg-white/[0.06] px-3 py-1 text-xs text-white/60">
+              {tag}
+            </span>
           ))}
         </div>
       </div>
