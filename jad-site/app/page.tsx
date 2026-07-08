@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from "./site-config";
 
 type ExperienceKey = "digikey" | "checkinwin" | "reunion" | "studentgov" | "projects";
 
@@ -24,9 +25,37 @@ type Experience = {
   logoAlt?: string;
   category: string;
   shortDescription: string;
+  anchor?: string;
+  footnotes?: string[];
   metrics: Metric[];
   skills: string[];
   stories: StoryCardData[];
+};
+
+type AIProject = {
+  name: string;
+  subtitle: string;
+  result: string;
+  bullets: string[];
+  tags: string[];
+};
+
+type RecognitionItem = {
+  title: string;
+  date?: string;
+  description?: string;
+};
+
+type EducationItem = {
+  degree: string;
+  school: string;
+  date?: string;
+  detail?: string;
+};
+
+type SkillGroup = {
+  name: string;
+  skills: string[];
 };
 
 type PersonalItem = {
@@ -65,20 +94,23 @@ const experiences: Experience[] = [
     ],
     skills: ["C#", ".NET", "SQL", "APIs", "Azure DevOps", "Agile"],
     stories: [
+      // TODO(Jad): quantify — how many APIs, how many internal teams consume them.
       {
-        title: "Self-Service Automation",
+        title: "Internal REST APIs",
         description:
-          "A concise case study area for customer-facing automation and support reduction.",
+          "Shipped production REST APIs used across internal teams. C# and .NET on the backend, SQL Server for data. Owned features from design through deployment in Azure DevOps.",
       },
+      // TODO(Jad): quantify — data volume (rows, SKUs, requests/day) and hours saved.
       {
-        title: "Legacy Workflow Modernization",
+        title: "Data-heavy workflows",
         description:
-          "A short section for explaining registration and account creation improvements.",
+          "Built and optimized SQL-backed services handling high-volume product data. Cut manual steps out of internal workflows by shipping tooling engineers actually used.",
       },
+      // TODO(Jad): quantify — team size, sprint cadence, or PR/review volume.
       {
-        title: "Bug Triage & Prioritization",
+        title: "Engineering fundamentals at scale",
         description:
-          "A recruiter-friendly story around cross-functional execution and impact.",
+          "Worked inside a large distribution company's codebase with real code review, CI/CD, and sprint cadence. Learned to ship maintainable code in a system other people depend on.",
       },
     ],
   },
@@ -125,11 +157,18 @@ const experiences: Experience[] = [
     logoAlt: "REUNION logo",
     category: "Experiential Events / Growth / Operations",
     shortDescription:
-      "Scaled a culturally inclusive events platform with operational rigor and a community-led brand strategy.",
+      "REUNION is a Minneapolis events company I co-founded and run as COO. We produce international house music experiences for transplants, expats, internationals, and locals.",
+    anchor: "Where have you been?",
+    footnotes: [
+      "Venues include Royalston (2,000 capacity, 360° projection), North Loop Green, Glass House.",
+      "Sub-brands: Flagship Chapter series, Casa de Habibi (Middle Eastern + Latin house), REUNION Privée.",
+    ],
     metrics: [
-      { value: "14,000+", label: "Attendees" },
-      { value: "19", label: "Events in 14 months" },
-      { value: "8", label: "Partners scaled" },
+      { value: "Six figures", label: "Revenue in 12 months" },
+      { value: "13+", label: "Events" },
+      { value: "9,000+", label: "Attendees" },
+      { value: "40+", label: "Contractors managed per event" },
+      { value: "Red Bull, Breakaway", label: "Brand partnerships" },
     ],
     skills: ["Operations", "Growth", "Brand", "Sponsorships", "Ticketing", "Events"],
     stories: [
@@ -398,6 +437,115 @@ const personalItems: PersonalItem[] = [
   },
 ];
 
+const custosBullets = [
+  "Won the Cornell Tech Startup Award.",
+  "Co-founded with a 5-person team. I lead business and strategy.",
+  "Built for the agentic commerce bottleneck: agents can act, but companies can't govern what they do. Custos is the control plane.",
+];
+
+const aiProjectsThesis =
+  "Don't trust retries. Don't trust the client. Don't trust the model to stop.";
+
+const aiProjects: AIProject[] = [
+  {
+    name: "Jadbot",
+    subtitle: "Automated Job Application Pipeline",
+    result: "Applies to jobs end to end with zero manual steps.",
+    bullets: [
+      "Claude-powered resume tailoring per role. python-docx for surgical bullet replacement in the resume file.",
+      "Playwright auto-submits applications on Ashby boards. Google Sheets tracks every application.",
+    ],
+    tags: ["Python", "Claude API", "Playwright", "python-docx", "Google Sheets API"],
+  },
+  {
+    name: "Reunion Brain",
+    subtitle: "Company Data Intelligence",
+    result: "AI system built on 12 months of real company data from REUNION.",
+    bullets: [
+      "Analyzed a 3,175-thread Instagram DM archive into categorized, actionable data: photographers, table inquiries, promoters, DJs.",
+    ],
+    tags: ["Python", "Claude API", "data pipeline"],
+  },
+  {
+    name: "Photo Finder",
+    subtitle: "Semantic Photo Search",
+    result: "Natural language search over personal photo libraries.",
+    bullets: [],
+    tags: ["Python", "Claude API", "embeddings"],
+  },
+  {
+    name: "Calendar Assistant",
+    subtitle: "Scheduling Agent",
+    result: "AI scheduling agent that manages calendar workflows.",
+    bullets: [],
+    tags: ["Python", "Claude API"],
+  },
+];
+
+const recognitionItems: RecognitionItem[] = [
+  {
+    title: "Spirit of Cornell Tech Award",
+    date: "May 2026",
+  },
+  {
+    title: "Professional Co-President, Cornell Tech Student Government",
+    description: "Delivered the Recognition Ceremony speech.",
+  },
+  {
+    title: "EmpireHacks 2026",
+    description:
+      "Organized the Cornell x Columbia AI hackathon. ~100 students, Roosevelt Island. Sponsors included Anthropic, a16z, AWS, and Lovable.",
+  },
+  {
+    title: "Mayo Clinic Innovation Scholars",
+    description: "Data role in a healthcare innovation program.",
+  },
+];
+
+const educationItems: EducationItem[] = [
+  {
+    degree: "MBA",
+    school: "Cornell Tech (Johnson, Cornell University)",
+    date: "May 2026",
+  },
+  {
+    degree: "B.S. Computer Science",
+    school: "College of Saint Scholastica",
+    detail: "GPA 3.91, Summa Cum Laude.",
+  },
+];
+
+const skillGroups: SkillGroup[] = [
+  {
+    name: "AI & Agents",
+    skills: [
+      "Claude API",
+      "agentic orchestration",
+      "Claude Code",
+      "Cursor",
+      "Lovable",
+      "pgvector",
+      "embeddings",
+    ],
+  },
+  {
+    name: "Engineering",
+    skills: [
+      "Python",
+      "C#/.NET",
+      "React/Next.js",
+      "TypeScript",
+      "PostgreSQL/Supabase",
+      "SQL Server",
+      "REST APIs",
+    ],
+  },
+  {
+    name: "Platform",
+    skills: ["Azure DevOps", "Vercel", "Stripe", "Playwright", "Google Sheets API"],
+  },
+];
+
 export default function PortfolioHome() {
   const [activeKey, setActiveKey] = useState<ExperienceKey>("digikey");
   const activeExperience = experiences.find((item) => item.key === activeKey) ?? experiences[0];
@@ -410,13 +558,18 @@ export default function PortfolioHome() {
         <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-14 px-6 py-10 md:px-10 lg:px-12">
           <Nav />
           <Hero />
+          <CustosSection />
+          <AIProjectsSection />
           <ExperienceTabs
             activeKey={activeKey}
             setActiveKey={setActiveKey}
             activeExperience={activeExperience}
           />
+          <LeadershipSection />
+          <EducationSection />
+          <SkillsSection />
           <WhatKeepsMeMoving />
-          <FooterCTA />
+          <ContactFooter />
         </div>
       </section>
     </main>
@@ -440,7 +593,10 @@ function Hero() {
     <section className="grid gap-10 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <div>
         <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Software Engineer / Founder / Operator</div>
-        <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-7xl">AI&apos;s biggest fan. Product builder. People-focused.</h1>
+        <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">AI Solutions Engineer &amp; Founder.</h1>
+        <p className="mt-6 max-w-2xl text-xl leading-8 text-white/70 md:text-2xl md:leading-9">
+          Cornell Tech MBA. I build AI systems companies can trust, and events people remember.
+        </p>
       </div>
       <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/30 backdrop-blur-xl">
         <div
@@ -515,7 +671,50 @@ function ExperiencePanel({ experience }: { experience: Experience }) {
     return <ProjectExperiencePanel experience={experience} />;
   }
 
-  return <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]"><div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"><div className="mb-8"><p className="mb-3 text-sm text-white/40">{experience.category}</p><h3 className="text-4xl font-semibold">{experience.name}</h3><p className="mt-2 text-lg text-white/60">{experience.role}</p><p className="mt-6 leading-7 text-white/60">{experience.shortDescription}</p></div><div className="grid gap-3 sm:grid-cols-3">{experience.metrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}</div><div className="mt-8"><p className="mb-3 text-sm uppercase tracking-[0.25em] text-white/35">Tools / Skills</p><div className="flex flex-wrap gap-2">{experience.skills.map((skill) => <TechBadge key={skill} label={skill} />)}</div></div></div><div className="grid gap-4">{experience.stories.map((story, index) => <StoryCard key={story.title} index={index + 1} story={story} />)}</div></div>;
+  return (
+    <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl">
+        <div className="mb-8">
+          <p className="mb-3 text-sm text-white/40">{experience.category}</p>
+          <h3 className="text-4xl font-semibold">{experience.name}</h3>
+          <p className="mt-2 text-lg text-white/60">{experience.role}</p>
+          <p className="mt-6 leading-7 text-white/60">{experience.shortDescription}</p>
+          {experience.anchor ? (
+            <p className="mt-4 text-lg font-medium italic text-white/75">
+              &ldquo;{experience.anchor}&rdquo;
+            </p>
+          ) : null}
+        </div>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {experience.metrics.map((metric) => (
+            <MetricCard key={metric.label} {...metric} />
+          ))}
+        </div>
+        {experience.footnotes?.length ? (
+          <div className="mt-4 grid gap-2">
+            {experience.footnotes.map((note) => (
+              <p key={note} className="text-sm leading-6 text-white/50">
+                {note}
+              </p>
+            ))}
+          </div>
+        ) : null}
+        <div className="mt-8">
+          <p className="mb-3 text-sm uppercase tracking-[0.25em] text-white/35">Tools / Skills</p>
+          <div className="flex flex-wrap gap-2">
+            {experience.skills.map((skill) => (
+              <TechBadge key={skill} label={skill} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="grid gap-4">
+        {experience.stories.map((story, index) => (
+          <StoryCard key={story.title} index={index + 1} story={story} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function ProjectExperiencePanel({ experience }: { experience: Experience }) {
@@ -686,6 +885,196 @@ function PersonalCard({ item }: { item: PersonalItem }) {
   );
 }
 
-function FooterCTA() {
-  return <section id="contact" className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-8 md:p-10"><h2 className="max-w-2xl text-3xl font-semibold md:text-4xl">Clean, modern, and scan-friendly.</h2><p className="mt-4 max-w-2xl text-white/55">Placeholder CTA block for recruiter actions.</p></section>;
+function CustosSection() {
+  return (
+    <section id="custos" className="scroll-mt-10">
+      <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-6 backdrop-blur-xl md:p-10">
+        <div className="mb-4 flex flex-wrap items-center gap-3">
+          <span className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-white/70">
+            Featured Venture
+          </span>
+          <span className="rounded-full border border-white/10 bg-white text-black px-4 py-2 text-sm font-semibold">
+            Cornell Tech Startup Award Winner
+          </span>
+        </div>
+        <h2 className="max-w-3xl text-3xl font-semibold md:text-5xl">Custos: AI Agent Governance</h2>
+        <p className="mt-3 text-lg text-white/60">Co-Founder, Business &amp; Strategy</p>
+        <p className="mt-6 max-w-3xl text-base leading-7 text-white/60 md:text-lg md:leading-8">
+          Custos is an AI governance platform that gives companies control over their AI agents. It
+          enforces budgets, approvals, and audit trails so autonomous AI can actually be trusted
+          with money.
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {custosBullets.map((bullet, index) => (
+            <div
+              key={bullet}
+              className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5"
+            >
+              <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-bold text-black">
+                {index + 1}
+              </div>
+              <p className="leading-7 text-white/65">{bullet}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AIProjectsSection() {
+  return (
+    <section id="ai-projects" className="scroll-mt-10">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <h2 className="text-3xl font-semibold md:text-4xl">AI Projects</h2>
+        <p className="max-w-xl text-sm leading-6 text-white/50">
+          Systems I built and run myself, end to end.
+        </p>
+      </div>
+      <blockquote className="mb-8 max-w-3xl border-l-2 border-white/40 pl-6 text-xl font-medium italic leading-8 text-white/75 md:text-2xl md:leading-9">
+        {aiProjectsThesis}
+      </blockquote>
+      <div className="grid gap-4 md:grid-cols-2">
+        {aiProjects.map((project) => (
+          <AIProjectCard key={project.name} project={project} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function AIProjectCard({ project }: { project: AIProject }) {
+  return (
+    <article className="group flex h-full flex-col rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]">
+      <p className="text-xs uppercase tracking-[0.25em] text-white/35">{project.subtitle}</p>
+      <h3 className="mt-3 text-2xl font-semibold text-white">{project.name}</h3>
+      <p className="mt-3 text-lg font-medium leading-7 text-white/75">{project.result}</p>
+      {project.bullets.length > 0 ? (
+        <ul className="mt-4 grid gap-2">
+          {project.bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-3 leading-7 text-white/55">
+              <span aria-hidden className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-white/40" />
+              {bullet}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      <div className="mt-auto flex flex-wrap gap-2 pt-5">
+        {project.tags.map((tag) => (
+          <span key={tag} className="rounded-full bg-white/[0.06] px-3 py-1 text-xs text-white/60">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function LeadershipSection() {
+  return (
+    <section id="leadership" className="scroll-mt-10">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <h2 className="text-3xl font-semibold md:text-4xl">Leadership &amp; Recognition</h2>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        {recognitionItems.map((item) => (
+          <article
+            key={item.title}
+            className="rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <h3 className="max-w-md text-xl font-semibold text-white">{item.title}</h3>
+              {item.date ? <span className="text-xs text-white/35">{item.date}</span> : null}
+            </div>
+            {item.description ? (
+              <p className="mt-3 leading-7 text-white/55">{item.description}</p>
+            ) : null}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EducationSection() {
+  return (
+    <section id="education" className="scroll-mt-10">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <h2 className="text-3xl font-semibold md:text-4xl">Education</h2>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        {educationItems.map((item) => (
+          <article
+            key={item.school}
+            className="rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <h3 className="text-xl font-semibold text-white">{item.degree}</h3>
+              {item.date ? <span className="text-xs text-white/35">{item.date}</span> : null}
+            </div>
+            <p className="mt-2 text-white/60">{item.school}</p>
+            {item.detail ? <p className="mt-3 text-sm text-white/50">{item.detail}</p> : null}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SkillsSection() {
+  return (
+    <section id="skills" className="scroll-mt-10">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <h2 className="text-3xl font-semibold md:text-4xl">Skills</h2>
+      </div>
+      <div className="grid gap-4">
+        {skillGroups.map((group) => (
+          <div
+            key={group.name}
+            className="rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6"
+          >
+            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-white/35">{group.name}</p>
+            <div className="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <TechBadge key={skill} label={skill} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ContactFooter() {
+  const contactLinks = [
+    { label: "Email", href: `mailto:${CONTACT_EMAIL}` },
+    { label: "LinkedIn", href: LINKEDIN_URL },
+    { label: "GitHub", href: GITHUB_URL },
+  ];
+
+  return (
+    <section
+      id="contact"
+      className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-8 md:p-10"
+    >
+      <h2 className="max-w-2xl text-3xl font-semibold md:text-4xl">Get in touch.</h2>
+      <p className="mt-4 max-w-2xl text-white/55">
+        Open to AI solutions engineering roles, founder conversations, and event partnerships.
+      </p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        {contactLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+            className="rounded-full border border-white/10 px-5 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  );
 }
