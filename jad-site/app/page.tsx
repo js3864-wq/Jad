@@ -597,6 +597,32 @@ function Hero() {
         <p className="mt-6 max-w-2xl text-xl leading-8 text-white/70 md:text-2xl md:leading-9">
           Cornell Tech MBA. I build AI systems companies can trust, and events people remember.
         </p>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-2 pl-2 pr-5 backdrop-blur-xl">
+            <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white">
+              <Image
+                src="/logos/cornell.png"
+                alt="Cornell University seal"
+                width={36}
+                height={36}
+                className="h-9 w-9 object-contain"
+              />
+            </span>
+            <span className="text-sm font-medium text-white/70">Cornell University</span>
+          </div>
+          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-2 pl-2 pr-5 backdrop-blur-xl">
+            <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-black">
+              <Image
+                src="/logos/reunion.png"
+                alt="REUNION logo"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
+              />
+            </span>
+            <span className="text-sm font-medium text-white/70">REUNION</span>
+          </div>
+        </div>
       </div>
       <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/30 backdrop-blur-xl">
         <div
