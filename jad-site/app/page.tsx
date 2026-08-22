@@ -623,7 +623,7 @@ function Hero() {
           <blockquote className="border-l-2 border-white/25 pl-6 text-xl italic leading-8 text-white/70 md:text-2xl md:leading-9">
             &ldquo;Expectations not set are expectations not met&rdquo;
           </blockquote>
-          <figcaption className="mt-3 pl-6 text-sm text-white/40">~ My brother</figcaption>
+          <figcaption className="mt-3 pl-6 text-sm text-white/40">~ My brother Tarek</figcaption>
         </figure>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           {heroBadges.map((badge) => (

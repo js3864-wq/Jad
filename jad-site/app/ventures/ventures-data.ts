@@ -49,7 +49,7 @@ export const ventures: Venture[] = [
   {
     slug: "reunion",
     name: "REUNION",
-    role: "Founder, Product & Operations",
+    role: "Co-Founder, Product & Operations",
     category: "Cultural Platform / Nightlife",
     badge: "17 events, 15,000+ attendees",
     tagline: "A cultural nightlife platform for Minneapolis, not a series of parties.",
