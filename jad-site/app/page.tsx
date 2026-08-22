@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from "./site-config";
+import { ventures, type Venture } from "./ventures/ventures-data";
 
 type ExperienceKey = "digikey" | "checkinwin" | "reunion" | "studentgov" | "projects";
 
@@ -38,6 +40,7 @@ type AIProject = {
   result: string;
   bullets: string[];
   tags: string[];
+  href?: string;
 };
 
 type RecognitionItem = {
@@ -437,12 +440,6 @@ const personalItems: PersonalItem[] = [
   },
 ];
 
-const custosBullets = [
-  "Won the Cornell Tech Startup Award!",
-  "Co-founded with a 5-person team. I lead business and strategy.",
-  "Built for the agentic commerce bottleneck: agents can act, but companies can't govern what they do. Custos is the control plane.",
-];
-
 const aiProjectsThesis =
   "Don't trust retries. Don't trust the client. Don't trust the model to stop.";
 
@@ -468,10 +465,11 @@ const aiProjects: AIProject[] = [
   },
   {
     name: "Photo Finder",
-    subtitle: "Semantic Photo Search",
-    result: "Natural language search over personal photo libraries.",
+    subtitle: "Face-Matching Photo Retrieval",
+    result: "Upload a selfie, get every event photo you appear in.",
     bullets: [],
-    tags: ["Python", "Claude API", "embeddings"],
+    tags: ["Next.js", "Supabase", "pgvector", "ArcFace"],
+    href: "/ventures/photo-finder",
   },
   {
     name: "Calendar Assistant",
@@ -558,7 +556,7 @@ export default function PortfolioHome() {
         <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-14 px-6 py-10 md:px-10 lg:px-12">
           <Nav />
           <Hero />
-          <CustosSection />
+          <FeaturedVenturesSection />
           <AIProjectsSection />
           <ExperienceTabs
             activeKey={activeKey}
@@ -592,10 +590,11 @@ function Hero() {
   return (
     <section className="grid gap-10 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <div>
-        <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Software Engineer / Founder / Operator</div>
-        <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">AI Solutions Engineer &amp; Founder.</h1>
+        <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Product Manager / Founder / Operator</div>
+        <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">AI Product Manager &amp; Founder.</h1>
         <p className="mt-6 max-w-2xl text-xl leading-8 text-white/70 md:text-2xl md:leading-9">
-          Cornell Tech MBA. I build AI systems companies can trust, and events people remember.
+          Cornell Tech MBA. I find the insight, own the four risks, and ship the product: AI systems
+          companies can trust, and events people remember.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-2 pl-2 pr-5 backdrop-blur-xl">
@@ -911,40 +910,76 @@ function PersonalCard({ item }: { item: PersonalItem }) {
   );
 }
 
-function CustosSection() {
+function FeaturedVenturesSection() {
   return (
-    <section id="custos" className="scroll-mt-10">
-      <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-6 backdrop-blur-xl md:p-10">
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <span className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-white/70">
-            Featured Venture
-          </span>
-          <span className="rounded-full border border-white/10 bg-white text-black px-4 py-2 text-sm font-semibold">
-            Cornell Tech Startup Award Winner
-          </span>
+    <section id="ventures" className="scroll-mt-10">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p className="mb-3 text-sm uppercase tracking-[0.28em] text-white/35">Featured Ventures</p>
+          <h2 className="text-3xl font-semibold md:text-4xl">Three products I own end to end</h2>
         </div>
-        <h2 className="max-w-3xl text-3xl font-semibold md:text-5xl">Custos: AI Agent Governance</h2>
-        <p className="mt-3 text-lg text-white/60">Co-Founder, Business &amp; Strategy</p>
-        <p className="mt-6 max-w-3xl text-base leading-7 text-white/60 md:text-lg md:leading-8">
-          Custos is an AI governance platform that gives companies control over their AI agents. It
-          enforces budgets, approvals, and audit trails so autonomous AI can actually be trusted
-          with money.
+        <p className="max-w-xl text-sm leading-6 text-white/50">
+          A cultural platform, a production retrieval app, and a governance layer for agent money.
+          Each one has a full write-up: the insight, the four risks, and what is still weak.
         </p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {custosBullets.map((bullet, index) => (
-            <div
-              key={bullet}
-              className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5"
-            >
-              <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-bold text-black">
-                {index + 1}
-              </div>
-              <p className="leading-7 text-white/65">{bullet}</p>
-            </div>
-          ))}
-        </div>
+      </div>
+      <div className="grid gap-5 lg:grid-cols-3">
+        {ventures.map((venture) => (
+          <VentureCard key={venture.slug} venture={venture} />
+        ))}
       </div>
     </section>
+  );
+}
+
+function VentureCard({ venture }: { venture: Venture }) {
+  return (
+    <article className="group flex h-full flex-col rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]">
+      <div className="relative mb-5 aspect-[16/9] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+        <Image
+          src={venture.image}
+          alt={venture.imageAlt}
+          fill
+          sizes="(min-width: 1024px) 33vw, 100vw"
+          className="object-cover transition duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-medium text-white/70">
+          {venture.category}
+        </span>
+        {venture.badge ? (
+          <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-black">
+            {venture.badge}
+          </span>
+        ) : null}
+      </div>
+
+      <div className="flex-1">
+        <h3 className="text-2xl font-semibold text-white">{venture.name}</h3>
+        <p className="mt-2 text-sm text-white/45">{venture.role}</p>
+        <p className="mt-4 text-lg font-medium leading-7 text-white/75">{venture.tagline}</p>
+
+        <ul className="mt-5 grid gap-3">
+          {venture.cardPoints.map((point, index) => (
+            <li key={point} className="flex gap-3 leading-7 text-white/55">
+              <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-xs font-bold text-black">
+                {index + 1}
+              </span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Link
+        href={`/ventures/${venture.slug}`}
+        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+      >
+        View details <span aria-hidden>&rarr;</span>
+      </Link>
+    </article>
   );
 }
 
@@ -992,6 +1027,14 @@ function AIProjectCard({ project }: { project: AIProject }) {
           </span>
         ))}
       </div>
+      {project.href ? (
+        <Link
+          href={project.href}
+          className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+        >
+          View details <span aria-hidden>&rarr;</span>
+        </Link>
+      ) : null}
     </article>
   );
 }
@@ -1086,7 +1129,7 @@ function ContactFooter() {
     >
       <h2 className="max-w-2xl text-3xl font-semibold md:text-4xl">Get in touch.</h2>
       <p className="mt-4 max-w-2xl text-white/55">
-        Open to AI solutions engineering roles, founder conversations, and event partnerships.
+        Open to AI product management roles, founder conversations, and event partnerships.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
         {contactLinks.map((link) => (
