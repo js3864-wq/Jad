@@ -35,6 +35,14 @@ export function VentureDetail({ venture }: { venture: Venture }) {
             <p className="mt-6 max-w-3xl text-xl leading-8 text-white/75 md:text-2xl md:leading-9">
               {venture.tagline}
             </p>
+            <a
+              href={venture.site.href}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+            >
+              {venture.site.label} <span aria-hidden>&#8599;</span>
+            </a>
           </header>
 
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
@@ -142,6 +150,7 @@ export function VentureDetail({ venture }: { venture: Venture }) {
                   <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/70 transition group-hover:text-white">
                     View details <span aria-hidden>&rarr;</span>
                   </span>
+                  <span className="mt-2 block text-xs text-white/35">{item.site.label}</span>
                 </Link>
               ))}
             </div>

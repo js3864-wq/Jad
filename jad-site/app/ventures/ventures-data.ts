@@ -43,6 +43,8 @@ export type Venture = {
   /** The part I'd say out loud in an interview before anyone asks. */
   honestRisk: { heading: string; body: string };
   tags: string[];
+  /** The live product, linked from the card and the detail page. */
+  site: { label: string; href: string };
 };
 
 export const ventures: Venture[] = [
@@ -130,6 +132,7 @@ export const ventures: Venture[] = [
       "Operations",
       "Go-to-Market",
     ],
+    site: { label: "reunion-us.com", href: "https://reunion-us.com" },
   },
   {
     slug: "photo-finder",
@@ -205,6 +208,10 @@ export const ventures: Venture[] = [
         "Biometric matching carries real regulatory exposure. Consent and privacy posture have to be settled before there is any question of monetization, and that gate comes before growth.",
     },
     tags: ["Next.js", "Supabase", "pgvector", "ArcFace", "Vector Search", "0 to 1"],
+    site: {
+      label: "app.reunion-us.com/photos",
+      href: "https://app.reunion-us.com/photos",
+    },
   },
   {
     slug: "custos",
@@ -289,6 +296,7 @@ export const ventures: Venture[] = [
       "Enterprise GTM",
       "Fundraising",
     ],
+    site: { label: "custospay.com", href: "https://www.custospay.com" },
   },
 ];
 
