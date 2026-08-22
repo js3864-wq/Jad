@@ -591,10 +591,9 @@ function Hero() {
     <section className="grid gap-10 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <div>
         <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Product Manager / Founder / Operator</div>
-        <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">AI Product Manager &amp; Founder.</h1>
+        <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">I get things done.</h1>
         <p className="mt-6 max-w-2xl text-xl leading-8 text-white/70 md:text-2xl md:leading-9">
-          Cornell Tech MBA. I find the insight, own the four risks, and ship the product: AI systems
-          companies can trust, and events people remember.
+          Expectations not set are expectations not met
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-2 pl-2 pr-5 backdrop-blur-xl">
