@@ -619,9 +619,12 @@ function Hero() {
       <div>
         <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Product Manager / Founder / Operator</div>
         <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">I get things done.</h1>
-        <p className="mt-6 max-w-2xl text-xl leading-8 text-white/70 md:text-2xl md:leading-9">
-          Expectations not set are expectations not met
-        </p>
+        <figure className="mt-6 max-w-2xl">
+          <blockquote className="border-l-2 border-white/25 pl-6 text-xl italic leading-8 text-white/70 md:text-2xl md:leading-9">
+            &ldquo;Expectations not set are expectations not met&rdquo;
+          </blockquote>
+          <figcaption className="mt-3 pl-6 text-sm text-white/40">~ My brother Tarek</figcaption>
+        </figure>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           {heroBadges.map((badge) => (
             <div

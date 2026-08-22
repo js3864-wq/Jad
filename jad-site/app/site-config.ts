@@ -19,4 +19,4 @@ export const SITE_URL =
 export const SITE_TITLE = "Jad Saouma | AI Product Manager & Founder";
 
 export const SITE_DESCRIPTION =
-  "Cornell Tech MBA. Founder of REUNION, Photo Finder, and Custos. Product work from insight to shipped system.";
+  "Cornell Tech MBA. Co-founder of REUNION and Custos, builder of Photo Finder. Product work from insight to shipped system.";
