@@ -617,7 +617,7 @@ function Hero() {
   return (
     <section className="grid gap-10 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <div>
-        <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Product Manager / Founder / Operator</div>
+        <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">Cornell Tech MBA / Founder / Operator</div>
         <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">I get things done.</h1>
         <figure className="mt-6 max-w-2xl">
           <blockquote className="border-l-2 border-white/25 pl-6 text-xl italic leading-8 text-white/70 md:text-2xl md:leading-9">
