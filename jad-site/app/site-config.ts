@@ -16,7 +16,7 @@ export const GITHUB_URL =
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://jad-site.vercel.app";
 
-export const SITE_TITLE = "Jad Saouma | AI Solutions Engineer & Founder";
+export const SITE_TITLE = "Jad Saouma | AI Product Manager & Founder";
 
 export const SITE_DESCRIPTION =
-  "Cornell Tech MBA. Founder of Custos and REUNION. Building AI systems that companies can trust.";
+  "Cornell Tech MBA. Founder of REUNION, Photo Finder, and Custos. Product work from insight to shipped system.";

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Photo Finder cover art">
+  <defs>
+    <linearGradient id="p-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08131d"/>
+      <stop offset="60%" stop-color="#070c14"/>
+      <stop offset="100%" stop-color="#06080f"/>
+    </linearGradient>
+    <radialGradient id="p-glow" cx="50%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="p-glow2" cx="14%" cy="82%" r="46%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="p-tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="p-match" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#p-bg)"/>
+  <rect width="1200" height="675" fill="url(#p-glow)"/>
+  <rect width="1200" height="675" fill="url(#p-glow2)"/>
+
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
+    <path d="M0 168 H1200 M0 336 H1200 M0 504 H1200 M240 0 V675 M480 0 V675 M720 0 V675 M960 0 V675"/>
+  </g>
+
+  <g opacity="0.9">
+    <g transform="translate(78,92)">
+      <rect width="170" height="128" rx="14" fill="url(#p-tile)" stroke="#ffffff" stroke-opacity="0.10"/>
+      <circle cx="85" cy="52" r="22" fill="#ffffff" fill-opacity="0.09"/>
+      <path d="M36 112 q49 -40 98 0 z" fill="#ffffff" fill-opacity="0.09"/>
+    </g>
+    <g transform="translate(292,52)">
+      <rect width="170" height="128" rx="14" fill="url(#p-tile)" stroke="#ffffff" stroke-opacity="0.10"/>
+      <circle cx="85" cy="52" r="22" fill="#ffffff" fill-opacity="0.08"/>
+      <path d="M36 112 q49 -40 98 0 z" fill="#ffffff" fill-opacity="0.08"/>
+    </g>
+    <g transform="translate(760,66)">
+      <rect width="170" height="128" rx="14" fill="url(#p-tile)" stroke="#ffffff" stroke-opacity="0.10"/>
+      <circle cx="85" cy="52" r="22" fill="#ffffff" fill-opacity="0.08"/>
+      <path d="M36 112 q49 -40 98 0 z" fill="#ffffff" fill-opacity="0.08"/>
+    </g>
+    <g transform="translate(966,206)">
+      <rect width="170" height="128" rx="14" fill="url(#p-tile)" stroke="#ffffff" stroke-opacity="0.10"/>
+      <circle cx="85" cy="52" r="22" fill="#ffffff" fill-opacity="0.08"/>
+      <path d="M36 112 q49 -40 98 0 z" fill="#ffffff" fill-opacity="0.08"/>
+    </g>
+    <g transform="translate(66,300)">
+      <rect width="170" height="128" rx="14" fill="url(#p-tile)" stroke="#ffffff" stroke-opacity="0.10"/>
+      <circle cx="85" cy="52" r="22" fill="#ffffff" fill-opacity="0.08"/>
+      <path d="M36 112 q49 -40 98 0 z" fill="#ffffff" fill-opacity="0.08"/>
+    </g>
+    <g transform="translate(950,438)">
+      <rect width="170" height="128" rx="14" fill="url(#p-tile)" stroke="#ffffff" stroke-opacity="0.10"/>
+      <circle cx="85" cy="52" r="22" fill="#ffffff" fill-opacity="0.08"/>
+      <path d="M36 112 q49 -40 98 0 z" fill="#ffffff" fill-opacity="0.08"/>
+    </g>
+  </g>
+
+  <g transform="translate(470,196)">
+    <rect width="260" height="196" rx="20" fill="url(#p-match)" stroke="#22d3ee" stroke-opacity="0.7" stroke-width="2"/>
+    <circle cx="130" cy="80" r="36" fill="#ffffff" fill-opacity="0.17"/>
+    <path d="M58 172 q72 -58 144 0 z" fill="#ffffff" fill-opacity="0.17"/>
+    <g stroke="#22d3ee" stroke-width="3" stroke-linecap="round" fill="none">
+      <path d="M18 50 V24 h26"/><path d="M242 50 V24 h-26"/>
+      <path d="M18 146 V172 h26"/><path d="M242 146 V172 h-26"/>
+    </g>
+  </g>
+
+  <g transform="translate(690,368)">
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#ffffff" stroke-opacity="0.8" stroke-width="7"/>
+    <path d="M31 31 L74 74" stroke="#ffffff" stroke-opacity="0.8" stroke-width="12" stroke-linecap="round"/>
+  </g>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="80" y="560" fill="#ffffff" font-size="54" font-weight="700" letter-spacing="1">Photo Finder</text>
+    <text x="84" y="600" fill="#ffffff" fill-opacity="0.55" font-size="20" font-weight="500" letter-spacing="4">ONE SELFIE. EVERY PHOTO YOU&#8217;RE IN.</text>
+  </g>
+</svg>
