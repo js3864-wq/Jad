@@ -35,6 +35,14 @@ export function VentureDetail({ venture }: { venture: Venture }) {
             <p className="mt-6 max-w-3xl text-xl leading-8 text-white/75 md:text-2xl md:leading-9">
               {venture.tagline}
             </p>
+            <a
+              href={venture.site.href}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+            >
+              {venture.site.label} <span aria-hidden>&#8599;</span>
+            </a>
           </header>
 
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
@@ -93,7 +101,7 @@ export function VentureDetail({ venture }: { venture: Venture }) {
           <section>
             <SectionLabel>Where the four risks sat</SectionLabel>
             <p className="mb-6 max-w-3xl leading-7 text-white/50">
-              Value, usability, feasibility, and viability. Naming which leg is weakest is the point.
+              Value, usability, feasibility, and viability, and the evidence behind each one.
             </p>
             <div className="grid gap-4 md:grid-cols-2">
               {venture.risks.map((risk) => (
@@ -106,11 +114,6 @@ export function VentureDetail({ venture }: { venture: Venture }) {
                 </article>
               ))}
             </div>
-          </section>
-
-          <section className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-6 md:p-10">
-            <h2 className="text-2xl font-semibold md:text-3xl">{venture.honestRisk.heading}</h2>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/65">{venture.honestRisk.body}</p>
           </section>
 
           <section>
@@ -142,6 +145,7 @@ export function VentureDetail({ venture }: { venture: Venture }) {
                   <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/70 transition group-hover:text-white">
                     View details <span aria-hidden>&rarr;</span>
                   </span>
+                  <span className="mt-2 block text-xs text-white/35">{item.site.label}</span>
                 </Link>
               ))}
             </div>

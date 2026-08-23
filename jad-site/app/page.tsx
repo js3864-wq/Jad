@@ -944,7 +944,7 @@ function FeaturedVenturesSection() {
         </div>
         <p className="max-w-xl text-sm leading-6 text-white/50">
           A cultural platform, a production retrieval app, and a governance layer for agent money.
-          Each one has a full write-up: the insight, the four risks, and what is still weak.
+          Each one has a full write-up: the insight, the four risks, and the evidence behind them.
         </p>
       </div>
       <div className="grid gap-5 lg:grid-cols-3">
@@ -997,12 +997,22 @@ function VentureCard({ venture }: { venture: Venture }) {
         </ul>
       </div>
 
-      <Link
-        href={`/ventures/${venture.slug}`}
-        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
-      >
-        View details <span aria-hidden>&rarr;</span>
-      </Link>
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <Link
+          href={`/ventures/${venture.slug}`}
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+        >
+          View details <span aria-hidden>&rarr;</span>
+        </Link>
+        <a
+          href={venture.site.href}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex w-fit items-center gap-2 rounded-full bg-white/[0.06] px-4 py-2 text-sm font-medium text-white/60 transition hover:bg-white hover:text-black"
+        >
+          {venture.site.label} <span aria-hidden>&#8599;</span>
+        </a>
+      </div>
     </article>
   );
 }
