@@ -944,7 +944,7 @@ function FeaturedVenturesSection() {
         </div>
         <p className="max-w-xl text-sm leading-6 text-white/50">
           A cultural platform, a production retrieval app, and a governance layer for agent money.
-          Each one has a full write-up: the insight, the four risks, and what is still weak.
+          Each one has a full write-up: the insight, the four risks, and the evidence behind them.
         </p>
       </div>
       <div className="grid gap-5 lg:grid-cols-3">

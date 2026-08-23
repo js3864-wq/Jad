@@ -101,7 +101,7 @@ export function VentureDetail({ venture }: { venture: Venture }) {
           <section>
             <SectionLabel>Where the four risks sat</SectionLabel>
             <p className="mb-6 max-w-3xl leading-7 text-white/50">
-              Value, usability, feasibility, and viability. Naming which leg is weakest is the point.
+              Value, usability, feasibility, and viability, and the evidence behind each one.
             </p>
             <div className="grid gap-4 md:grid-cols-2">
               {venture.risks.map((risk) => (
@@ -114,11 +114,6 @@ export function VentureDetail({ venture }: { venture: Venture }) {
                 </article>
               ))}
             </div>
-          </section>
-
-          <section className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-6 md:p-10">
-            <h2 className="text-2xl font-semibold md:text-3xl">{venture.honestRisk.heading}</h2>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/65">{venture.honestRisk.body}</p>
           </section>
 
           <section>

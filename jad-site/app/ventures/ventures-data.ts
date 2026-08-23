@@ -40,8 +40,6 @@ export type Venture = {
   vision: string;
   sections: VentureSection[];
   risks: VentureRisk[];
-  /** The part I'd say out loud in an interview before anyone asks. */
-  honestRisk: { heading: string; body: string };
   tags: string[];
   /** The live product, linked from the card and the detail page. */
   site: { label: string; href: string };
@@ -116,14 +114,9 @@ export const ventures: Venture[] = [
       {
         name: "Usability",
         body:
-          "The weakest leg historically. Discovery, ticketing, and post-event delivery were fragmented across Instagram DMs, third-party ticketing, and shared drives.",
+          "The next leg to build. Discovery, ticketing, and post-event delivery ran across Instagram DMs, third-party ticketing, and shared drives, and consolidating them is where the product leverage is.",
       },
     ],
-    honestRisk: {
-      heading: "The honest weakness",
-      body:
-        "Reunion is still closer to a services business with strong brand equity than a product with leverage. The strategic question I'm working is which layer becomes software.",
-    },
     tags: [
       "Product Strategy",
       "Two-sided Market",
@@ -199,14 +192,9 @@ export const ventures: Venture[] = [
       {
         name: "Viability",
         body:
-          "Currently the weakest leg, and I'd say so out loud. It's a retention and brand asset for Reunion, not yet a revenue line. The open question is whether it's a feature of Reunion or a standalone product for photographers and event operators.",
+          "Today it's a retention and brand asset for Reunion. The open question I'm working is whether it stays a feature of Reunion or becomes a standalone product for photographers and event operators.",
       },
     ],
-    honestRisk: {
-      heading: "The honest risk",
-      body:
-        "Biometric matching carries real regulatory exposure. Consent and privacy posture have to be settled before there is any question of monetization, and that gate comes before growth.",
-    },
     tags: ["Next.js", "Supabase", "pgvector", "ArcFace", "Vector Search", "0 to 1"],
     site: {
       label: "app.reunion-us.com/photos",
@@ -280,14 +268,9 @@ export const ventures: Venture[] = [
       {
         name: "Usability",
         body:
-          "The underexplored one. Policy configuration UX is where governance products die. If a finance lead can't express “agents can spend up to $500 on vendor invoices without approval, anything above routes to me” in under two minutes, the product doesn't get adopted regardless of how good the enforcement engine is.",
+          "Policy configuration UX is where governance products are won. If a finance lead can express “agents can spend up to $500 on vendor invoices without approval, anything above routes to me” in under two minutes, the enforcement engine gets adopted. That two-minute bar is the design target.",
       },
     ],
-    honestRisk: {
-      heading: "The honest risk",
-      body:
-        "Timing. We're building infrastructure for a behavior that is real but early. If enterprise agent spending scales slower than expected, we're too early. If a rail provider bundles governance, we're squeezed. Both are answerable, and I'd rather name them than dodge them.",
-    },
     tags: [
       "AI Governance",
       "Agentic Commerce",
