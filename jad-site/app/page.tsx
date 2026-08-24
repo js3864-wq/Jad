@@ -571,6 +571,26 @@ const heroBadges = [
   },
 ];
 
+// TODO(Jad): the blurb and facts below are placeholders drawn from your
+// recognition entry — rewrite them in your own words and confirm the ceremony
+// name and date match the program.
+const valedictorianTalk = {
+  videoId: "Jmkv9_wLuPY",
+  // The URL you shared starts at 1s, so the embed picks up from the same spot.
+  startSeconds: 1,
+  title: "Jad Saouma — Cornell Tech Recognition Ceremony speech",
+  eyebrow: "On Stage",
+  heading: "The valedictorian speech",
+  blurb: "The speech in full, straight from the ceremony recording.",
+  facts: [
+    { label: "Occasion", value: "Cornell Tech Recognition Ceremony" },
+    { label: "Role", value: "Professional Co-President, Student Government" },
+    { label: "Class", value: "May 2026" },
+  ],
+};
+
+const valedictorianWatchUrl = `https://www.youtube.com/watch?v=${valedictorianTalk.videoId}&t=${valedictorianTalk.startSeconds}s`;
+
 export default function PortfolioHome() {
   const [activeKey, setActiveKey] = useState<ExperienceKey>("digikey");
   const activeExperience = experiences.find((item) => item.key === activeKey) ?? experiences[0];
@@ -584,6 +604,7 @@ export default function PortfolioHome() {
           <Nav />
           <Hero />
           <FeaturedVenturesSection />
+          <ValedictorianSection />
           <AIProjectsSection />
           <ExperienceTabs
             activeKey={activeKey}
@@ -1015,6 +1036,121 @@ function VentureCard({ venture }: { venture: Venture }) {
         </a>
       </div>
     </article>
+  );
+}
+
+function ValedictorianSection() {
+  // The iframe only mounts after a click, so the page does not pull YouTube's
+  // player on first load. Until then this is a poster image plus an SVG button.
+  const [isPlaying, setIsPlaying] = useState(false);
+  // maxres does not exist for every upload, so fall back once, then to a
+  // plain gradient rather than a broken image.
+  const [poster, setPoster] = useState<"max" | "hq" | "none">("max");
+
+  const posterSrc = `https://i.ytimg.com/vi/${valedictorianTalk.videoId}/${
+    poster === "max" ? "maxresdefault" : "hqdefault"
+  }.jpg`;
+
+  const embedSrc =
+    `https://www.youtube-nocookie.com/embed/${valedictorianTalk.videoId}` +
+    `?autoplay=1&start=${valedictorianTalk.startSeconds}&rel=0&modestbranding=1`;
+
+  return (
+    <section id="valedictorian-speech" className="scroll-mt-10">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p className="mb-3 text-sm uppercase tracking-[0.28em] text-white/35">
+            {valedictorianTalk.eyebrow}
+          </p>
+          <h2 className="text-3xl font-semibold md:text-4xl">
+            {valedictorianTalk.heading}
+          </h2>
+        </div>
+        <p className="max-w-xl text-sm leading-6 text-white/50">
+          {valedictorianTalk.blurb}
+        </p>
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-[1.55fr_0.45fr]">
+        <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4">
+          <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black">
+            {isPlaying ? (
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={embedSrc}
+                title={valedictorianTalk.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setIsPlaying(true)}
+                aria-label={`Play video: ${valedictorianTalk.title}`}
+                className="group absolute inset-0 h-full w-full cursor-pointer"
+              >
+                {poster === "none" ? (
+                  <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(59,130,246,0.25),transparent_60%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.18),transparent_55%)]" />
+                ) : (
+                  <Image
+                    src={posterSrc}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 65vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    onError={() => setPoster(poster === "max" ? "hq" : "none")}
+                  />
+                )}
+                <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/10" />
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-black shadow-lg shadow-black/40 transition duration-300 group-hover:scale-110 md:h-20 md:w-20">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden
+                      className="ml-1 h-6 w-6 md:h-7 md:w-7"
+                    >
+                      <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.79-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14Z" />
+                    </svg>
+                  </span>
+                </span>
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-2 pb-1 pt-4">
+            <p className="text-lg font-semibold text-white">Watch the speech</p>
+            <p className="text-sm text-white/45">
+              {isPlaying
+                ? "Playing from YouTube."
+                : "Nothing loads from YouTube until you press play."}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6">
+          <dl className="grid gap-5">
+            {valedictorianTalk.facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="text-xs uppercase tracking-[0.25em] text-white/35">
+                  {fact.label}
+                </dt>
+                <dd className="mt-2 leading-7 text-white/70">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <a
+            href={valedictorianWatchUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white hover:text-black"
+          >
+            Open on YouTube <span aria-hidden>&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
